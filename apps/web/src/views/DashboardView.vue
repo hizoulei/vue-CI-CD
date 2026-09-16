@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from "vue";
 import {
   ArrowUpRight,
   Check,
@@ -8,13 +8,15 @@ import {
   MoreHorizontal,
   Target,
   TrendingUp,
-} from 'lucide-vue-next';
-import { UiBadge } from '@vue-ci-cd/ui';
-import { useProjectStore, type TaskStatus } from '../stores/project';
+} from "lucide-vue-next";
+import { UiBadge } from "@vue-ci-cd/ui";
+import { useProjectStore, type TaskStatus } from "../stores/project";
 
 const store = useProjectStore();
-const tabs: Array<'全部' | TaskStatus> = ['全部', '进行中', '待开始', '已完成'];
-const progress = computed(() => Math.round((store.completedCount / store.tasks.length) * 100));
+const tabs: Array<"全部" | TaskStatus> = ["全部", "进行中", "待开始", "已完成"];
+const progress = computed(() =>
+  Math.round((store.completedCount / store.tasks.length) * 100),
+);
 </script>
 
 <template>
@@ -24,15 +26,21 @@ const progress = computed(() => Math.round((store.completedCount / store.tasks.l
         <div class="stat-card">
           <div class="flex items-center justify-between">
             <p>进行中的任务</p>
-            <div class="icon-wrap bg-blue-50 text-brand-500"><Clock3 :size="18" /></div>
+            <div class="icon-wrap bg-blue-50 text-brand-500">
+              <Clock3 :size="18" />
+            </div>
           </div>
-          <strong>{{ store.tasks.filter((t) => t.status === '进行中').length }}</strong
+          <strong>{{
+            store.tasks.filter((t) => t.status === "进行中").length
+          }}</strong
           ><span class="trend"><TrendingUp :size="14" />较上周 +12%</span>
         </div>
         <div class="stat-card">
           <div class="flex items-center justify-between">
             <p>本周已完成</p>
-            <div class="icon-wrap bg-emerald-50 text-emerald-500"><Check :size="18" /></div>
+            <div class="icon-wrap bg-emerald-50 text-emerald-500">
+              <Check :size="18" />
+            </div>
           </div>
           <strong>{{ store.completedCount + 8 }}</strong
           ><span class="trend"><TrendingUp :size="14" />较上周 +8%</span>
@@ -40,7 +48,9 @@ const progress = computed(() => Math.round((store.completedCount / store.tasks.l
         <div class="stat-card">
           <div class="flex items-center justify-between">
             <p>团队完成率</p>
-            <div class="icon-wrap bg-violet-50 text-violet-500"><Target :size="18" /></div>
+            <div class="icon-wrap bg-violet-50 text-violet-500">
+              <Target :size="18" />
+            </div>
           </div>
           <strong>{{ progress + 68 }}%</strong
           ><span class="text-xs text-slate-400">保持良好势头</span>
@@ -79,30 +89,46 @@ const progress = computed(() => Math.round((store.completedCount / store.tasks.l
             <div
               class="grid size-9 shrink-0 place-items-center rounded-lg bg-slate-50 text-slate-400"
             >
-              <Check v-if="task.status === '已完成'" :size="17" class="text-emerald-500" /><Circle
-                v-else
+              <Check
+                v-if="task.status === '已完成'"
                 :size="17"
-              />
+                class="text-emerald-500"
+              /><Circle v-else :size="17" />
             </div>
             <div class="min-w-0 flex-1">
               <p
                 class="truncate text-sm font-semibold"
-                :class="task.status === '已完成' && 'text-slate-400 line-through'"
+                :class="
+                  task.status === '已完成' && 'text-slate-400 line-through'
+                "
               >
                 {{ task.title }}
               </p>
-              <p class="mt-1 text-xs text-slate-400">{{ task.project }} · {{ task.owner }}</p>
+              <p class="mt-1 text-xs text-slate-400">
+                {{ task.project }} · {{ task.owner }}
+              </p>
             </div>
             <UiBadge
-              :tone="task.priority === '高' ? 'amber' : task.status === '已完成' ? 'green' : 'blue'"
+              :tone="
+                task.priority === '高'
+                  ? 'amber'
+                  : task.status === '已完成'
+                    ? 'green'
+                    : 'blue'
+              "
               >{{ task.priority }}优先级</UiBadge
-            ><span class="hidden w-16 text-right text-xs text-slate-400 sm:block">{{
-              task.due
-            }}</span
-            ><button class="text-slate-400"><MoreHorizontal :size="18" /></button>
+            ><span
+              class="hidden w-16 text-right text-xs text-slate-400 sm:block"
+              >{{ task.due }}</span
+            ><button class="text-slate-400">
+              <MoreHorizontal :size="18" />
+            </button>
           </div>
         </div>
-        <div v-if="!store.visibleTasks.length" class="p-10 text-center text-sm text-slate-400">
+        <div
+          v-if="!store.visibleTasks.length"
+          class="p-10 text-center text-sm text-slate-400"
+        >
           没有匹配的任务
         </div>
         <div class="border-t border-slate-100 px-5 py-3 text-center">
@@ -125,7 +151,9 @@ const progress = computed(() => Math.round((store.completedCount / store.tasks.l
             :style="{ width: `${Math.min(progress + 68, 100)}%` }"
           />
         </div>
-        <p class="mt-4 text-xs leading-5 text-blue-100">你已完成大部分目标，继续保持！</p>
+        <p class="mt-4 text-xs leading-5 text-blue-100">
+          你已完成大部分目标，继续保持！
+        </p>
       </div>
       <div class="rounded-2xl border border-slate-200 bg-white p-6">
         <div class="flex items-center justify-between">
@@ -135,7 +163,8 @@ const progress = computed(() => Math.round((store.completedCount / store.tasks.l
         <div class="mt-5 space-y-5">
           <div>
             <div class="flex justify-between text-xs">
-              <span class="font-semibold">Web 平台</span><span class="text-slate-400">68%</span>
+              <span class="font-semibold">Web 平台</span
+              ><span class="text-slate-400">68%</span>
             </div>
             <div class="mt-2 h-1.5 rounded-full bg-slate-100">
               <div class="h-1.5 w-[68%] rounded-full bg-brand-500" />
@@ -143,7 +172,8 @@ const progress = computed(() => Math.round((store.completedCount / store.tasks.l
           </div>
           <div>
             <div class="flex justify-between text-xs">
-              <span class="font-semibold">增长实验</span><span class="text-slate-400">42%</span>
+              <span class="font-semibold">增长实验</span
+              ><span class="text-slate-400">42%</span>
             </div>
             <div class="mt-2 h-1.5 rounded-full bg-slate-100">
               <div class="h-1.5 w-[42%] rounded-full bg-violet-400" />
@@ -151,7 +181,8 @@ const progress = computed(() => Math.round((store.completedCount / store.tasks.l
           </div>
           <div>
             <div class="flex justify-between text-xs">
-              <span class="font-semibold">团队协作</span><span class="text-slate-400">85%</span>
+              <span class="font-semibold">团队协作</span
+              ><span class="text-slate-400">85%</span>
             </div>
             <div class="mt-2 h-1.5 rounded-full bg-slate-100">
               <div class="h-1.5 w-[85%] rounded-full bg-emerald-400" />
