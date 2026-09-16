@@ -1,7 +1,7 @@
 node_modules
 dist
 .turbo
-.vitepress/cache
-.vitepress/dist
+**/.vitepress/cache/
+**/.vitepress/dist/
 .DS_Store
 *.local
