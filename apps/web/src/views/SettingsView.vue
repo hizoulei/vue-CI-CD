@@ -6,7 +6,7 @@
       <div class="rounded-2xl border border-slate-200 bg-white p-6">
         <h3 class="font-semibold">工作区信息</h3>
         <label class="mt-5 block text-sm text-slate-500"
-          >工作区名称<input
+          >工作区名称1<input
             class="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2"
             value="Flowboard 团队"
         /></label>
@@ -14,7 +14,8 @@
       <div class="rounded-2xl border border-slate-200 bg-white p-6">
         <h3 class="font-semibold">通知</h3>
         <label class="mt-5 flex items-center justify-between text-sm"
-          ><span>任务截止提醒</span><input type="checkbox" checked class="size-4 accent-brand-500"
+          ><span>任务截止提醒</span
+          ><input type="checkbox" checked class="size-4 accent-brand-500"
         /></label>
       </div>
     </div>
