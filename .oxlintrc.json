@@ -1,0 +1,8 @@
+{
+  "$schema": "https://oxc.rs/schema/oxlint.json",
+  "plugins": ["typescript", "vue"],
+  "rules": {
+    "no-unused-vars": "error",
+    "no-console": "warn"
+  }
+}

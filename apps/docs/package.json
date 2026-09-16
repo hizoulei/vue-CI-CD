@@ -1,0 +1,19 @@
+{
+  "name": "@vue-ci-cd/docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "lint": "oxlint .vitepress",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@vue-ci-cd/config": "workspace:*",
+    "typescript": "^5.8.3",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.42"
+  }
+}

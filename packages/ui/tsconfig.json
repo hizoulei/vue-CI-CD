@@ -1,0 +1,5 @@
+{
+  "extends": "@vue-ci-cd/config/tsconfig.base.json",
+  "include": ["src/**/*.ts", "src/**/*.vue"],
+  "compilerOptions": { "composite": true, "tsBuildInfoFile": "node_modules/.cache/ui.tsbuildinfo" }
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "https://oxc.rs/schema/oxfmt.json",
+  "printWidth": 100,
+  "singleQuote": true,
+  "semi": true
+}
