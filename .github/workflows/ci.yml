@@ -1,5 +1,4 @@
 name: CI & Docs
-
 on:
   pull_request:
   push:
@@ -27,6 +26,13 @@ jobs:
       - run: pnpm lint
       - run: pnpm typecheck
       - run: pnpm build
+      - name: Build VitePress docs
+        run: pnpm --filter @vue-ci-cd/docs build
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-dist
+          path: apps/docs/.vitepress/dist
 
   docs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -36,15 +42,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with: { version: 10 }
-      - uses: actions/setup-node@v4
-        with: { node-version: 22, cache: pnpm }
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm --filter @vue-ci-cd/docs build
+      - name: Download docs artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: docs-dist
+          path: docs-dist
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with: { path: apps/docs/.vitepress/dist }
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs-dist
       - id: deployment
         uses: actions/deploy-pages@v4
