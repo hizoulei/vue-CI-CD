@@ -1,5 +1,10 @@
 {
   "extends": "@vue-ci-cd/config/tsconfig.base.json",
   "include": ["src/**/*.ts", "src/**/*.vue", "vite.config.ts", "vitest.config.ts"],
-  "compilerOptions": { "composite": true, "tsBuildInfoFile": "node_modules/.cache/web.tsbuildinfo" }
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "node_modules/.cache/web.tsbuildinfo",
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] }
+  }
 }
