@@ -12,7 +12,9 @@ pnpm dev
 - 示例应用：http://localhost:5173
 - 文档站点：http://localhost:4173
 
-常用命令：`pnpm lint`、`pnpm typecheck`、`pnpm build`、`pnpm format:check`。
+常用命令：`pnpm lint`、`pnpm typecheck`、`pnpm test`、`pnpm build`、`pnpm format:check`。
+
+应用环境变量示例位于 `apps/web/.env.example`，复制为 `.env.local` 后即可覆盖应用名称、API 地址和分析开关。
 
 ## 目录结构
 

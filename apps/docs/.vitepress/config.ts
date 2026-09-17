@@ -25,6 +25,7 @@ export default defineConfig({
           text: '工程实践',
           items: [
             { text: 'Monorepo 与 Turborepo', link: '/guide/monorepo' },
+            { text: '环境变量与测试', link: '/guide/env-testing' },
             { text: 'UI 与样式', link: '/guide/ui' },
             { text: '代码质量', link: '/guide/quality' },
           ],

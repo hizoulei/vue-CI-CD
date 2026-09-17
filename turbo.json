@@ -12,6 +12,13 @@
     "lint": {
       "outputs": []
     },
+    "test": {
+      "outputs": []
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
     "typecheck": {
       "outputs": []
     }
